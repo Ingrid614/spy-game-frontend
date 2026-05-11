@@ -1,0 +1,124 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import SectionTitle from "@/components/SectionTitle";
+import styles from "./RevealRole.module.css";
+import GameChat from "@/components/GameChat";
+
+export default function RevealRolePage() {
+
+  const router = useRouter();
+
+  const [role, setRole] = useState("");
+  const [word, setWord] = useState("");
+  const [revealed, setRevealed] = useState(false);
+  const username = localStorage.getItem("username");
+
+  useEffect(() => {
+
+    const token = localStorage.getItem("token");
+    console.log(token);
+
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+    setRole("Espion");
+    setWord("Pharmacie");
+
+    // fetch("http://localhost:8080/api/game/my-role", {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     setRole(data.role);
+    //     setWord(data.word);
+    //   });
+
+  }, []);
+
+  return (
+    <div className={styles.page}>
+      <SectionTitle
+            eyebrow="Rôle secret"
+            title="Découvre ton identité"
+            description="Personne ne doit voir ton écran."
+            centered
+          />
+
+      <div className={styles.layout}>
+
+
+        <div className={styles.left}>
+          <div className={styles.roleCard}>
+
+            <div className={styles.topBar}>
+              <span className={styles.playerBadge}>
+                {username}
+              </span>
+            </div>
+
+            {
+              revealed
+                ? (
+                  <>
+
+                    <div className={styles.roleBlock}>
+
+                      <p className={styles.label}>
+                        TON RÔLE
+                      </p>
+
+                      <h2 className={styles.role}>
+                        {role}
+                      </h2>
+
+                    </div>
+
+                    <div className={styles.wordBlock}>
+
+                      <p className={styles.label}>
+                        TON MOT
+                      </p>
+
+                      <div className={styles.wordCard}>
+                        {word}
+                      </div>
+
+                    </div>
+
+                  </>
+                )
+                : (
+                  <div className={styles.hiddenState}>
+                    Ton rôle est caché
+                  </div>
+                )
+            }
+
+            <button
+              className={styles.primaryButton}
+              onClick={() => setRevealed(true)}
+            >
+              {
+                revealed
+                  ? "Commencer à jouer"
+                  : "Voir mon rôle"
+              }
+            </button>
+
+          </div>
+
+        </div>
+        <div className={styles.right}>
+          <GameChat gameCode="MEBZKH" />
+        </div>
+
+      </div>
+
+    </div>
+  );
+}

@@ -1,0 +1,45 @@
+.page {
+  padding: 48px 24px 72px;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.tableCard {
+  background: white;
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+}
+
+.headerRow,
+.row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr 0.8fr;
+  gap: 12px;
+  padding: 16px 14px;
+  align-items: center;
+}
+
+.headerRow {
+  font-weight: 700;
+  color: #8f8d09;
+  border-bottom: 1px solid #ece7c0;
+}
+
+.row {
+  border-bottom: 1px solid #f1efdf;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 700px) {
+  .headerRow,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

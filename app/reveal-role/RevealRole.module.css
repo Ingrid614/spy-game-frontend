@@ -1,0 +1,136 @@
+.page {
+  padding: 48px 24px 72px;
+}
+
+
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.primaryButton,
+.secondaryButton {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: #8f8d09;
+  color: white;
+}
+
+.secondaryButton {
+  background: #f2f0d8;
+  color: #232323;
+}
+
+.layout {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+
+  gap: 24px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 1000px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    position: static;
+  }
+}
+.roleCard {
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+
+  box-shadow: 0 24px 50px rgba(0,0,0,0.07);
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  min-height: 400px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playerBadge {
+  background: #f2f0d8;
+  color: #0d013f;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+
+  font-weight: 700;
+}
+
+.roleBlock,
+.wordBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777;
+  font-weight: 700;
+}
+
+.role {
+  font-size: 3rem;
+  margin: 0;
+  color: #0d013f;
+}
+
+.wordCard {
+  background: #0d013f;
+  color: white;
+
+  padding: 24px;
+  border-radius: 20px;
+
+  font-size: 2rem;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.hiddenState {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+  color: #777;
+}
+

@@ -1,0 +1,118 @@
+.page {
+  padding: 48px 24px 72px;
+}
+
+.hero {
+  max-width: 1180px;
+  margin: 0 auto 72px;
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.heroContent {
+  background: white;
+  padding: 48px;
+  border-radius: 30px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.07);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color:#0d013f;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 20px 0 0;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 700px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-weight: 700;
+}
+
+.primaryButton {
+  background: #0d013f;
+  color: white;
+}
+
+.secondaryButton {
+  background: #f2f0d8;
+  color: #282717;
+}
+
+.previewCard {
+  background: #0d013f;
+  color: white;
+  padding: 36px;
+  border-radius: 30px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
+}
+
+.previewBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+
+.previewLine {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.previewHint {
+  margin-top: 20px;
+  line-height: 1.8;
+  color: #f7f7e9;
+}
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 960px) {
+  .hero,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroContent,
+  .previewCard {
+    padding: 32px;
+  }
+}

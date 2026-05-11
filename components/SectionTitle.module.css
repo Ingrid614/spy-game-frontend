@@ -1,0 +1,30 @@
+.wrapper {
+  margin-bottom: 24px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #0d013f;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw, 2.6rem);
+  color: #1f1f1f;
+}
+
+.description {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  color: #5a5a5a;
+  line-height: 1.7;
+  max-width: 760px;
+}

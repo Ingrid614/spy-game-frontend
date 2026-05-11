@@ -1,0 +1,37 @@
+.token {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #f6f5e7;
+  color: #2a2a2a;
+  font-weight: 600;
+  border: 1px solid rgba(143, 141, 9, 0.15);
+  transition: all 0.3s ease;
+}
+
+.small {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+}
+
+.active {
+  background: #8f8d09;
+  color: white;
+  transform: scale(1.05);
+}
+
+.completed {
+  background: transparent;
+  color: #8c8b82;
+  border-style: dashed;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.85;
+}

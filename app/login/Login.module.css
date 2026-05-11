@@ -1,0 +1,93 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 48px;
+  border-radius: 30px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.07);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #0d013f;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  margin-top: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputGroup label {
+  font-weight: 700;
+  color: #0d013f;
+}
+
+.inputGroup input {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #0d013f;
+}
+
+.primaryButton {
+  border: none;
+  background: #0d013f;
+  color: white;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footerText {
+  margin-top: 24px;
+  text-align: center;
+  color: #555;
+}
+
+.footerText a {
+  color: #0d013f;
+  font-weight: 700;
+  text-decoration: none;
+}
+.primaryButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

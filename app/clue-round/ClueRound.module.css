@@ -1,0 +1,112 @@
+.page {
+  padding: 48px 24px 72px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.mainCard,
+.sideCard {
+  background: white;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+}
+
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.status,
+.round {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f2f0d8;
+}
+
+.turnCard {
+  padding: 24px;
+  border-radius: 22px;
+  background: #faf9f1;
+}
+
+.turnTitle,
+.blockTitle {
+  margin: 0 0 12px;
+}
+
+.turnText {
+  margin: 0 0 18px;
+  line-height: 1.7;
+  color: #5d5d5d;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #ddd8ab;
+  margin-bottom: 14px;
+}
+
+.primaryButton {
+  border: none;
+  border-radius: 14px;
+  background:#0d013f;
+  color: white;
+  padding: 14px 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.historyBlock {
+  margin-top: 24px;
+}
+
+.cluesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clueRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f8f7ee;
+}
+
+.cluePlayer {
+  font-weight: 700;
+}
+
+.clueWord {
+  color: #4a4a4a;
+}
+
+.playersColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 920px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
