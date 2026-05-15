@@ -51,6 +51,18 @@ export default function GameChat({ gameCode }: Props) {
             ]);
           }
         );
+        stompClient.subscribe(
+          `/topic/game/${gameCode}/state`,
+          (message) => {
+
+            const receivedMessage = JSON.parse(message.body);
+
+            setMessages((prev) => [
+              ...prev,
+              receivedMessage
+            ]);
+          }
+        );
       }
     });
 

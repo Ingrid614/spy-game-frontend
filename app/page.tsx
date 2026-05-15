@@ -1,7 +1,9 @@
+"use client"
 import Link from "next/link";
 import SectionTitle from "@/components/SectionTitle";
 import StepCard from "@/components/StepCard";
 import styles from "./Home.module.css";
+import { useEffect } from "react";
 
 const steps = [
   {
@@ -22,6 +24,11 @@ const steps = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+  
+      localStorage.clear();
+  
+    }, []);
   return (
     <div className={styles.page}>
       <section className={styles.hero}>

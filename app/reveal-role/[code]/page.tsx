@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import SectionTitle from "@/components/SectionTitle";
 import styles from "./RevealRole.module.css";
 import GameChat from "@/components/GameChat";
+import { useParams } from "next/navigation";
 
 export default function RevealRolePage() {
 
@@ -15,6 +16,10 @@ export default function RevealRolePage() {
   const [revealed, setRevealed] = useState(false);
   const username = localStorage.getItem("username");
 
+  const params = useParams();
+
+  const gameCode = params.code as string;
+
   useEffect(() => {
 
     const token = localStorage.getItem("token");
@@ -24,19 +29,19 @@ export default function RevealRolePage() {
       router.push("/login");
       return;
     }
-    setRole("Espion");
-    setWord("Pharmacie");
 
-    // fetch("http://localhost:8080/api/game/my-role", {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setRole(data.role);
-    //     setWord(data.word);
-    //   });
+    fetch("http://localhost:8080/api/game/my-role", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setRole(data.role);
+        setWord(data.word);
+      });
+    
+      console.log(role,word);
 
   }, []);
 
@@ -101,7 +106,13 @@ export default function RevealRolePage() {
 
             <button
               className={styles.primaryButton}
-              onClick={() => setRevealed(true)}
+              onClick={() => {
+                if(!revealed){
+                    setRevealed(true);
+                    return;
+                }
+                router.push(`/clue-round/${gameCode}`);
+              }}
             >
               {
                 revealed
@@ -114,7 +125,7 @@ export default function RevealRolePage() {
 
         </div>
         <div className={styles.right}>
-          <GameChat gameCode="MEBZKH" />
+          <GameChat gameCode={gameCode} />
         </div>
 
       </div>

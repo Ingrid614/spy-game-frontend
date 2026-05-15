@@ -1,0 +1,274 @@
+.page {
+
+  padding: 48px 24px 72px;
+}
+
+.container {
+
+  max-width: 1300px;
+
+  margin: 0 auto;
+}
+
+.layout {
+
+  margin-top: 40px;
+
+  display: grid;
+
+  grid-template-columns: 1.2fr 0.8fr;
+
+  gap: 24px;
+}
+
+.mainCard,
+.sideCard {
+
+  background: white;
+
+  border-radius: 30px;
+
+  padding: 36px;
+
+  box-shadow: 0 24px 50px rgba(0,0,0,0.06);
+}
+
+.topBar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 32px;
+}
+
+.label {
+
+  margin: 0;
+
+  color: #777;
+
+  font-size: 0.85rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+}
+
+.gameCode {
+
+  margin: 10px 0 0;
+
+  font-size: 3rem;
+
+  color: #0d013f;
+}
+
+.connected,
+.disconnected {
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+}
+
+.connected {
+
+  background: #e7f8ec;
+
+  color: #137333;
+}
+
+.disconnected {
+
+  background: #fdeaea;
+
+  color: #c5221f;
+}
+
+.playersHeader {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.playersList {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.playerCard {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  background: #fafafa;
+
+  border-radius: 18px;
+
+  padding: 16px;
+}
+
+.avatar {
+
+  width: 52px;
+
+  height: 52px;
+
+  border-radius: 50%;
+
+  background: #0d013f;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-weight: 700;
+
+  font-size: 1.2rem;
+}
+
+.playerName {
+
+  margin: 0;
+
+  font-weight: 700;
+}
+
+.youBadge {
+
+  display: inline-block;
+
+  margin-top: 4px;
+
+  background: #f2f0d8;
+
+  color: #0d013f;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+}
+
+.startButton {
+
+  width: 100%;
+
+  margin-top: 32px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  background: #0d013f;
+
+  color: white;
+
+  padding: 18px;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  min-height: 64px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.startButton:disabled {
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.warning {
+
+  margin-top: 16px;
+
+  color: #b42318;
+
+  font-weight: 600;
+}
+
+.sideTitle {
+
+  margin-top: 0;
+
+  margin-bottom: 24px;
+}
+
+.rule {
+
+  padding: 18px;
+
+  border-radius: 16px;
+
+  background: #f8f8f8;
+
+  margin-bottom: 16px;
+
+  line-height: 1.7;
+}
+
+.loader {
+
+  width: 24px;
+
+  height: 24px;
+
+  border: 3px solid rgba(255,255,255,0.3);
+
+  border-top: 3px solid white;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1000px) {
+
+  .layout {
+
+    grid-template-columns: 1fr;
+  }
+}

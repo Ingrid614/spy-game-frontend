@@ -41,7 +41,7 @@ export default function SignupPage() {
       alert("Server error");
     }
   };
-
+  
   return (
     <div className={styles.page}>
 
