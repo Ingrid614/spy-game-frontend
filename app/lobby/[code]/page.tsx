@@ -18,6 +18,8 @@ interface GameState {
 
   phase: string;
 
+  status: string;
+
   alivePlayers: string[];
 
   roundNumber: number;
@@ -67,7 +69,8 @@ export default function LobbyPage() {
         phase: data.status,
         alivePlayers: data.players,
         roundNumber: 0,
-        winner: null
+        winner: null,
+        status: data.status,
         });
 
     } catch (error) {
@@ -121,8 +124,8 @@ export default function LobbyPage() {
             setGameState(state);
 
             if (
-                state.phase ===
-                "WORD_DISTRIBUTION"
+                state.status ===
+                "IN_PROGRESS" 
             ) {
 
                 router.push(
@@ -307,7 +310,7 @@ export default function LobbyPage() {
               className={styles.startButton}
               disabled={
                 (gameState?.alivePlayers
-                  ?.length || 0) < 3 || loading
+                  ?.length || 0) < 2 || loading
               }
               onClick={handleStartGame}
             >

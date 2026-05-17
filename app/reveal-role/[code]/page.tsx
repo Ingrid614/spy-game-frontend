@@ -14,13 +14,15 @@ export default function RevealRolePage() {
   const [role, setRole] = useState("");
   const [word, setWord] = useState("");
   const [revealed, setRevealed] = useState(false);
-  const username = localStorage.getItem("username");
+  const [username, setUsername] = useState<string | null>(null);
 
   const params = useParams();
 
   const gameCode = params.code as string;
 
   useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    setUsername(storedUsername);
 
     const token = localStorage.getItem("token");
     console.log(token);
@@ -30,7 +32,7 @@ export default function RevealRolePage() {
       return;
     }
 
-    fetch("http://localhost:8080/api/game/my-role", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/game/my-role?code=${gameCode}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
