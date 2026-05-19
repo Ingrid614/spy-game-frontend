@@ -64,14 +64,7 @@ export default function LobbyPage() {
         );
         const data = await response.json();
         console.log("INITIAL GAME", data);
-        setGameState({
-        gameCode,
-        phase: data.status,
-        alivePlayers: data.players,
-        roundNumber: 0,
-        winner: null,
-        status: data.status,
-        });
+        setGameState(data);
 
     } catch (error) {
 
@@ -123,14 +116,12 @@ export default function LobbyPage() {
 
             setGameState(state);
 
-            if (
-                state.status ===
-                "IN_PROGRESS" 
-            ) {
-
+            if (state.status === "IN_PROGRESS") {
+              setTimeout(() => {
                 router.push(
                 `/reveal-role/${gameCode}`
                 );
+              },3000);
             }
             }
         );

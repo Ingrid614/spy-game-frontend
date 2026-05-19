@@ -40,8 +40,6 @@ export default function ClueRoundPage() {
   const [state, setState] =
     useState<GameState | null>(null);
 
-  const [client, setClient] =
-    useState<Client | null>(null);
 
   const [connected, setConnected] =
     useState(false);
@@ -53,7 +51,41 @@ export default function ClueRoundPage() {
       ? localStorage.getItem("username")
       : null;
 
+  const fetchInitialState = async () => {
+
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      const response = await fetch(
+
+        `${process.env.NEXT_PUBLIC_API_URL}/api/game/get?code=${gameCode}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      const data = await response.json();
+      console.log(
+              "INITAL STATE",
+              data
+            );
+
+      setState(data);
+
+    } catch(error){
+
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
+
+    fetchInitialState();
 
     const socket = new SockJS(
       process.env.NEXT_PUBLIC_WS_URL!
@@ -77,19 +109,24 @@ export default function ClueRoundPage() {
 
             const gameState =
               JSON.parse(message.body);
-
+            console.log(
+              "NEW STATE RECEIVED",
+              gameState
+            );
             setState(gameState);
 
-            if(
-              gameState.phase === "VOTING"
-            ){
-              router.push(`/vote/${gameCode}`);
+            if(gameState.phase === "VOTING"){
+              setTimeout(() => {
+                router.push(`/vote/${gameCode}`);
+              }, 3000);
             }
 
             if(
               gameState.phase === "RESULT"
             ){
-              router.push(`/result/${gameCode}`);
+              setTimeout(() => {
+                router.push(`/result/${gameCode}`);
+              },3000);
             }
           }
         );
@@ -98,7 +135,6 @@ export default function ClueRoundPage() {
 
     stompClient.activate();
 
-    setClient(stompClient);
 
     return () => {
       stompClient.deactivate();

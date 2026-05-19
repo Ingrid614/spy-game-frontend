@@ -42,6 +42,7 @@ export default function VotePage(){
     useState<string | null>(null);
 
   const [gameState, setGameState] = useState<GameState | null>(null);
+  const [hasVoted, setHasVoted] = useState(false);
 
   const fetchInitialGameState = async () => {
 
@@ -61,14 +62,7 @@ export default function VotePage(){
         );
         const data = await response.json();
         console.log("INITIAL GAME", data);
-        setGameState({
-        gameCode,
-        phase: data.status,
-        alivePlayers: data.players,
-        roundNumber: 0,
-        winner: null,
-        status: data.status,
-        });
+        setGameState(data);
 
     } catch (error) {
 
@@ -107,10 +101,11 @@ export default function VotePage(){
             if(
               state.phase === "RESULT"
             ){
-
-              router.push(
+              setTimeout(() => {
+                router.push(
                 `/result/${gameCode}`
               );
+              },3000);
             }
           }
         );
@@ -127,7 +122,7 @@ export default function VotePage(){
 
   const vote = async () => {
 
-    if(!selected){
+    if(!selected || hasVoted){
       return;
     }
 
@@ -136,7 +131,7 @@ export default function VotePage(){
       const token =
         localStorage.getItem("token");
 
-      await fetch(
+      const response = await fetch(
 
         `${process.env.NEXT_PUBLIC_API_URL}/api/game/vote`,
 
@@ -144,7 +139,8 @@ export default function VotePage(){
           method: "POST",
 
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
 
             Authorization:
               `Bearer ${token}`
@@ -158,6 +154,19 @@ export default function VotePage(){
           })
         }
       );
+
+      const data =
+        await response.json();
+
+      if(!response.ok){
+
+        alert(data.message);
+
+        return;
+      }
+
+      // IMPORTANT
+      setHasVoted(true);
 
     } catch(error){
 
@@ -187,6 +196,7 @@ export default function VotePage(){
 
                 <button
                   key={player}
+                  disabled={hasVoted}
                   className={`${styles.playerButton} ${
                     selected === player
                       ? styles.selectedPlayer
@@ -199,12 +209,26 @@ export default function VotePage(){
               ))
             }
 
-            <button
-              className={styles.voteButton}
-              onClick={vote}
-            >
-              Confirmer le vote
-            </button>
+            {
+            hasVoted
+              ? (
+                <div className={styles.waiting}>
+
+                  Vote envoyé.
+                  Attends les autres joueurs.
+
+                </div>
+              )
+              : (
+                <button
+                  className={styles.voteButton}
+                  onClick={vote}
+                  disabled={!selected}
+                >
+                  Confirmer le vote
+                </button>
+              )
+          }
 
           </div>
 

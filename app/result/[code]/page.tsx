@@ -16,15 +16,24 @@ import styles from "./Result.module.css";
 
 interface GameState {
 
+  gameCode: string;
+
+  phase: string;
+
+  alivePlayers: string[];
+
+  clues: Record<string,string>;
+
+  votes: Record<string,number>;
+
+  roundNumber: number;
+
   eliminatedPlayer: string | null;
 
   winner: string | null;
 
-  phase: string;
-
-  roundNumber: number;
+  status: string;
 }
-
 export default function ResultPage(){
 
   const params = useParams();
@@ -35,8 +44,42 @@ export default function ResultPage(){
 
   const [state,setState] =
     useState<GameState | null>(null);
+  
+  const fetchInitialState = async () => {
+
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      const response = await fetch(
+
+        `${process.env.NEXT_PUBLIC_API_URL}/api/game/get?code=${gameCode}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      const data = await response.json();
+      console.log(
+              "INITAL STATE",
+              data
+            );
+
+      setState(data);
+
+    } catch(error){
+
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
+
+    fetchInitialState();
 
     const socket = new SockJS(
       process.env.NEXT_PUBLIC_WS_URL!
